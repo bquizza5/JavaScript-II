@@ -55,9 +55,14 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
-let fullName = runners.map(function(runner){
-    return {'first_name': runner.first_name, 'last_name': runner.last_name};
-}) 
+
+let fullName = []
+
+runners.forEach((runner) => {
+    new_line = {'first_name': runner.first_name, 'last-name': runner.last_name}; 
+    fullName.push(new_line);
+    new_line = [];
+})
     
 
 console.log(fullName);
@@ -81,13 +86,35 @@ console.log(largeShirts);
 let ticketPriceTotal = runners.reduce(function(total, runner){
     return total += runner.donation;
 }, 0);
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//company Gigashots can no longer participate in the race. use the filter() function to create a list of runners from Gigashots.
+
+let Gigashots = runners.filter(function(runner){
+    return runner.company_name === 'Gigashots';
+})
+console.log(Gigashots)
+
 
 // Problem 2
+ //find the total donation ammount of the runners frim Gigashots
+
+let gigashot_donation = Gigashots.reduce(function(total, runner){
+    return total += runner.donation;
+}, 0);
+
+console.log(gigashot_donation)
+
 
 // Problem 3
+// The event director needs both the first and last names of each runner for their running bibs. Use the .map() function to combine both the first and last names into a new array called fullName2.
+let fullName2 = runners.map(function(runner){
+    return {'first_name': runner.first_name, 'last_name': runner.last_name};
+}) 
+
+console.log(fullName2)
